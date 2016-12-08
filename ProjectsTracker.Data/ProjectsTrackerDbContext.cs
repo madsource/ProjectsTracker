@@ -6,6 +6,7 @@
     using Models;
     using Models.Extensions;
     using System.Data.Entity.Validation;
+    using Migrations;
 
     public class ProjectsTrackerDbContext : IdentityDbContext
     {
@@ -76,6 +77,8 @@
                    .HasMany(t => t.TimeReportList)
                    .WithOptional()
                    .WillCascadeOnDelete(true);
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ProjectsTrackerDbContext, Configuration>());
 
             base.OnModelCreating(modelBuilder);
         }
