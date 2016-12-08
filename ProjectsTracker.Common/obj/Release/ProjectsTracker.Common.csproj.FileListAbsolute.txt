@@ -1,0 +1,5 @@
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker.Common\bin\Release\ProjectsTracker.Common.dll
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker.Common\bin\Release\ProjectsTracker.Common.pdb
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker.Common\obj\Release\ProjectsTracker.Common.csprojResolveAssemblyReference.cache
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker.Common\obj\Release\ProjectsTracker.Common.dll
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker.Common\obj\Release\ProjectsTracker.Common.pdb

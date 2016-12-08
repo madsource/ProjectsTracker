@@ -38,7 +38,7 @@ namespace ProjectsTracker
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/cssBundle").Include(
                       "~/Content/vendors/bootstrap/dist/css/bootstrap.css",
                       "~/Content/vendors/font-awesome/css/font-awesome.css",
                       "~/Content/vendors/nprogress/nprogress.css",

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@PtConstants.ProjectsTrackerTitle</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/cssBundle")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
@@ -111,6 +111,6 @@
     </div>
 
     @Scripts.Render("~/bundles/libs")
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false) 
 </body>
 </html>
