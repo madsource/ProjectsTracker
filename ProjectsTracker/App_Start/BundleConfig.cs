@@ -43,7 +43,7 @@ namespace ProjectsTracker
                       "~/Content/vendors/font-awesome/css/font-awesome.css",
                       "~/Content/vendors/nprogress/nprogress.css",
                       "~/Content/vendors/iCheck/skins/flat/green.css",
-                      "~/Content/vendors/animate.css/animate.min.css",
+                      "~/Content/vendors/animate.css/animate.min.css", 
                       "~/Content/vendors/bootstrap-daterangepicker/daterangepicker.css",
                       "~/Content/css/theme.css",
                       "~/Content/css/site.css"));
