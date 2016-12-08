@@ -1,0 +1,50 @@
+﻿.profile {
+    overflow: hidden;
+}
+
+/*Project statuses*/
+.project-status .btn.btn-xs {
+    color: #fff;
+    padding: 2px 12px;
+    min-width: 60px;
+}
+
+.project-status .btn.btn-xs.status-red {    
+    background-color: #d9534f;
+    border-color: #d43f3a;    
+}
+
+.project-status .btn.btn-xs.status-amber {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.project-status .btn.btn-xs.status-green {
+    background: #26B99A;
+    border: 1px solid #169F85;
+}
+
+
+/*Text statuses*/
+
+span.text-status-green {
+    color: #26B99A;
+}
+
+span.text-status-amber {
+    color: #f0ad4e;
+}
+
+span.text-status-red {
+    color: #d9534f;
+}
+
+/* percent in report time*/
+#percent-sign {
+    top: 5px;
+    text-indent: 37px;
+}
+
+input#ProgressPercent {
+    text-indent: -22px;
+}

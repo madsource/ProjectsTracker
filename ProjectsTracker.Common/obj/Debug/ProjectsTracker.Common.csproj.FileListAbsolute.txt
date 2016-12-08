@@ -1,0 +1,5 @@
+C:\Users\Maria\Source\Repos\bet365_csharpCourse\ProjectsTracker\ProjectsTracker.Common\bin\Debug\ProjectsTracker.Common.dll
+C:\Users\Maria\Source\Repos\bet365_csharpCourse\ProjectsTracker\ProjectsTracker.Common\bin\Debug\ProjectsTracker.Common.pdb
+C:\Users\Maria\Source\Repos\bet365_csharpCourse\ProjectsTracker\ProjectsTracker.Common\obj\Debug\ProjectsTracker.Common.csprojResolveAssemblyReference.cache
+C:\Users\Maria\Source\Repos\bet365_csharpCourse\ProjectsTracker\ProjectsTracker.Common\obj\Debug\ProjectsTracker.Common.dll
+C:\Users\Maria\Source\Repos\bet365_csharpCourse\ProjectsTracker\ProjectsTracker.Common\obj\Debug\ProjectsTracker.Common.pdb

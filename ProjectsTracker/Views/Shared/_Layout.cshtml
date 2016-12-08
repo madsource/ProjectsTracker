@@ -1,0 +1,116 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@PtConstants.ProjectsTrackerTitle</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>@PtConstants.ProjectsTrackerTitle</span></a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- menu profile quick info -->
+                        <div class="profile">
+                            <div class="profile_pic">
+                                <img src="/Content/images/avatars/@(User.Identity.GetUserName()).png" alt="..." class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <span>@PtConstants.Welcome,</span>
+                                <h2>
+                                    @((User.IsInRole(RoleConstants.AdmminRole)) ? PtConstants.Admin : User.Identity.GetFullName() )
+                                </h2>
+                            </div>
+                        </div>
+                        <!-- / menu profile quick info-->
+
+
+                        <br />
+
+
+                        <!--sidebar menu-->
+
+
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+                            <div class="menu_section">
+                                @*<h3>@PtConstants.General</h3>*@
+                                <ul class="nav side-menu">
+                                    <li class="active">
+                                        <a><i class="fa fa-home"></i> @PtConstants.General <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: block;">
+                                            <li><a href="/">@PtConstants.Dashboard</a></li>
+                                            @if (User.IsInRole(RoleConstants.AdmminRole) || User.IsInRole(RoleConstants.ManagerRole))
+                                            {
+                                                <li><a href="/Home/index?mine=true">@PtConstants.MyProjects</a></li>
+                                            }                                            
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            @if (User.IsInRole(RoleConstants.AdmminRole))
+                            {
+                                <div class="menu_section">
+                                    @*<h3>@PtConstants.Administration</h3>*@
+                                    <ul class="nav side-menu">
+                                        <li class="active">
+                                            <a><i class="fa fa-home"></i> @PtConstants.Administration <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu" style="display: block;">
+                                                <li><a href="@Url.Action("Index", "Users", new {Area = "Admin"})">@PtConstants.Users</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                        <!-- /sidebar menu -->
+                    </div>
+                </div>
+            }
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                @Html.Partial("_LoginPartial")
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/libs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

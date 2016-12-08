@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A9E35768-6930-4746-9303-EE735856BE4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectsTracker.Data</RootNamespace>
+    <AssemblyName>ProjectsTracker.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201612011857162_initial.cs" />
+    <Compile Include="Migrations\201612011857162_initial.Designer.cs">
+      <DependentUpon>201612011857162_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612011900451_Admin_User.cs" />
+    <Compile Include="Migrations\201612011900451_Admin_User.Designer.cs">
+      <DependentUpon>201612011900451_Admin_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612011911422_Admin_User_FirstnameLastname.cs" />
+    <Compile Include="Migrations\201612011911422_Admin_User_FirstnameLastname.Designer.cs">
+      <DependentUpon>201612011911422_Admin_User_FirstnameLastname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612021826313_BaseModelRequiredFields.cs" />
+    <Compile Include="Migrations\201612021826313_BaseModelRequiredFields.Designer.cs">
+      <DependentUpon>201612021826313_BaseModelRequiredFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612021838076_BaseModelAdded_UpdateOn.cs" />
+    <Compile Include="Migrations\201612021838076_BaseModelAdded_UpdateOn.Designer.cs">
+      <DependentUpon>201612021838076_BaseModelAdded_UpdateOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612031037061_Project_ApplicationUserNotVirtual.cs" />
+    <Compile Include="Migrations\201612031037061_Project_ApplicationUserNotVirtual.Designer.cs">
+      <DependentUpon>201612031037061_Project_ApplicationUserNotVirtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612031317113_PTaskChange.cs" />
+    <Compile Include="Migrations\201612031317113_PTaskChange.Designer.cs">
+      <DependentUpon>201612031317113_PTaskChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612041203307_TimeReportItem_added.cs" />
+    <Compile Include="Migrations\201612041203307_TimeReportItem_added.Designer.cs">
+      <DependentUpon>201612041203307_TimeReportItem_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612061314157_PTask_addedOwnerID_AuthotID.cs" />
+    <Compile Include="Migrations\201612061314157_PTask_addedOwnerID_AuthotID.Designer.cs">
+      <DependentUpon>201612061314157_PTask_addedOwnerID_AuthotID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612061321153_PTask_deleted_OwnerID_AuthorID.cs" />
+    <Compile Include="Migrations\201612061321153_PTask_deleted_OwnerID_AuthorID.Designer.cs">
+      <DependentUpon>201612061321153_PTask_deleted_OwnerID_AuthorID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612061340204_PTask_addedOwnerID_AuthotID1.cs" />
+    <Compile Include="Migrations\201612061340204_PTask_addedOwnerID_AuthotID1.Designer.cs">
+      <DependentUpon>201612061340204_PTask_addedOwnerID_AuthotID1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612061542520_TimeReportItem_deletedReportedOn.cs" />
+    <Compile Include="Migrations\201612061542520_TimeReportItem_deletedReportedOn.Designer.cs">
+      <DependentUpon>201612061542520_TimeReportItem_deletedReportedOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612061853303_ProjectTasks_cascadeDelete.cs" />
+    <Compile Include="Migrations\201612061853303_ProjectTasks_cascadeDelete.Designer.cs">
+      <DependentUpon>201612061853303_ProjectTasks_cascadeDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ProjectsTrackerData.cs" />
+    <Compile Include="IProjectsTrackerData.cs" />
+    <Compile Include="ProjectsTrackerDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="fonts\fontawesome-webfont.eot" />
+    <None Include="fonts\fontawesome-webfont.ttf" />
+    <None Include="fonts\fontawesome-webfont.woff" />
+    <None Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="fonts\FontAwesome.otf" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectsTracker.Models\ProjectsTracker.Models.csproj">
+      <Project>{F0D7D81B-696E-44E1-9C95-4BBC305DAD58}</Project>
+      <Name>ProjectsTracker.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612011857162_initial.resx">
+      <DependentUpon>201612011857162_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612011900451_Admin_User.resx">
+      <DependentUpon>201612011900451_Admin_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612011911422_Admin_User_FirstnameLastname.resx">
+      <DependentUpon>201612011911422_Admin_User_FirstnameLastname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021826313_BaseModelRequiredFields.resx">
+      <DependentUpon>201612021826313_BaseModelRequiredFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021838076_BaseModelAdded_UpdateOn.resx">
+      <DependentUpon>201612021838076_BaseModelAdded_UpdateOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612031037061_Project_ApplicationUserNotVirtual.resx">
+      <DependentUpon>201612031037061_Project_ApplicationUserNotVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612031317113_PTaskChange.resx">
+      <DependentUpon>201612031317113_PTaskChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612041203307_TimeReportItem_added.resx">
+      <DependentUpon>201612041203307_TimeReportItem_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612061314157_PTask_addedOwnerID_AuthotID.resx">
+      <DependentUpon>201612061314157_PTask_addedOwnerID_AuthotID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612061321153_PTask_deleted_OwnerID_AuthorID.resx">
+      <DependentUpon>201612061321153_PTask_deleted_OwnerID_AuthorID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612061340204_PTask_addedOwnerID_AuthotID1.resx">
+      <DependentUpon>201612061340204_PTask_addedOwnerID_AuthotID1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612061542520_TimeReportItem_deletedReportedOn.resx">
+      <DependentUpon>201612061542520_TimeReportItem_deletedReportedOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612061853303_ProjectTasks_cascadeDelete.resx">
+      <DependentUpon>201612061853303_ProjectTasks_cascadeDelete.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

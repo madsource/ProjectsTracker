@@ -1,0 +1,515 @@
+﻿@model ProjectsTracker.ViewModels.ProjectViewModel
+
+<div class="">
+    @if (Model.isActive)
+    {
+        <div class="page-title">
+            <div class="title_left">
+                <h3>@Model.Title</h3>
+                <h6>@ProjectDetailsConstants.Created: @Model.CreatedOn <small> @((Model.UpdatedOn != null) ? (ProjectDetailsConstants.Edited + ": " + Model.UpdatedOn) : "")</small></h6>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            @ProjectDetailsConstants.Status: <span class="text-status-@Model.Status.ToLower()">@Model.Status</span>
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                            @if (User.IsInRole(RoleConstants.AdmminRole) || User.IsInRole(RoleConstants.ManagerRole))
+                            {
+                                <ul class="stats-overview">
+                                    <li>
+                                        <span class="name"> @ProjectDetailsConstants.EstimatedBudget</span>
+                                        <span class="value text-success">@String.Format("{0:C}", Model.EstimatedBudget)</span>
+                                    </li>
+                                    <li>
+                                        <span class="name"> @ProjectDetailsConstants.TotalAmountSpend</span>
+                                        <span class="value text-success"> @String.Format("{0:C}", (Model.TotalTimeSpend * PtConstants.RatePerHour)) </span>
+                                    </li>
+                                    <li class="hidden-phone">
+                                        <span class="name"> @ProjectDetailsConstants.EstimatedDaysToFinish</span>
+                                        <span class="value text-success">@((Model.ExpectedEndDate - DateTime.Now).Days)</span>
+                                    </li>
+                                </ul>
+                                <br />
+
+                                <div id = "mainb" style="height:350px;"></div>
+                            }
+
+
+
+                            @*<h4>Recent Activity</h4>
+
+                                <!-- end of user messages -->
+                                <ul class="messages">
+                                    <li>
+                                        <img src="~/Content/images/img.jpg" class="avatar" alt="Avatar">
+                                        <div class="message_date">
+                                            <h3 class="date text-info">24</h3>
+                                            <p class="month">May</p>
+                                        </div>
+                                        <div class="message_wrapper">
+                                            <h4 class="heading">Desmond Davison</h4>
+                                            <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
+                                            <br />
+                                            <p class="url">
+                                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                                                <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>*@
+                            <!-- end of user messages -->
+
+                            <h3>@ProjectDetailsConstants.Tasks</h3>
+
+                            @if (User.IsInRole(RoleConstants.AdmminRole) || (User.IsInRole(RoleConstants.ManagerRole) && User.Identity.GetUserId() == Model.Owner.Id))
+                            {
+                                @Html.Partial("~/Views/PTask/_CreatePTask.cshtml", new PTaskViewModel(), new ViewDataDictionary { { "Users", Model.Users
+                                        }, { "projectId", Model.Id
+                                    } })
+                            }
+
+                            <div id="tasks-holder" class="tasks-holder col-md-12">
+                                @Html.Partial("~/Views/PTask/_TasksList.cshtml", Model.Tasks,
+                                    new ViewDataDictionary {
+                                        { "Users", Model.Users }, { "projectId", Model.Id }
+                                    })
+                            </div>
+
+                        </div>
+
+                        <!-- start project-detail sidebar -->
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+
+                            <section class="panel">
+
+                                <div class="x_title">
+                                    <h2>@ProjectDetailsConstants.ProjectDescription</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-body">
+
+                                    <p>@Model.Content</p>
+                                    <br />
+
+                                    <div class="project_detail">
+
+                                        <p class="title">@ProjectDetailsConstants.ClientCompany</p>
+                                        <p>@Model.ClientName</p>
+                                        <p class="title">@ProjectDetailsConstants.ProjectManager</p>
+                                        <p>@Model.Owner.FirstName @Model.Owner.LastName</p>
+                                    </div>
+
+                                    <br />
+                                    <h5>@ProjectDetailsConstants.ProjectFiles</h5>
+                                    <ul class="list-unstyled project_files">
+                                        <li>
+                                            <a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
+                                        </li>
+                                        <li>
+                                            <a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
+                                        </li>
+                                    </ul>
+                                    <br />
+
+                                    <div class="text-center mtop20">
+                                        <a href="#" class="btn btn-sm btn-primary">@ProjectDetailsConstants.AddFiles</a>
+                                        <a href="#" class="btn btn-sm btn-warning">@ProjectDetailsConstants.ReportContact</a>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                        </div>
+                        <!-- end project-detail sidebar -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>@ProjectDetailsConstants.ProjectClosed</p>
+    }
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- ECharts -->
+    <script>
+        var theme = {
+            color: [
+                '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
+                '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
+            ],
+
+            title: {
+                itemGap: 8,
+                textStyle: {
+                    fontWeight: 'normal',
+                    color: '#408829'
+                }
+            },
+
+            dataRange: {
+                color: ['#1f610a', '#97b58d']
+            },
+
+            toolbox: {
+                color: ['#408829', '#408829', '#408829', '#408829']
+            },
+
+            tooltip: {
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                axisPointer: {
+                    type: 'line',
+                    lineStyle: {
+                        color: '#408829',
+                        type: 'dashed'
+                    },
+                    crossStyle: {
+                        color: '#408829'
+                    },
+                    shadowStyle: {
+                        color: 'rgba(200,200,200,0.3)'
+                    }
+                }
+            },
+
+            dataZoom: {
+                dataBackgroundColor: '#eee',
+                fillerColor: 'rgba(64,136,41,0.2)',
+                handleColor: '#408829'
+            },
+            grid: {
+                borderWidth: 0
+            },
+
+            categoryAxis: {
+                axisLine: {
+                    lineStyle: {
+                        color: '#408829'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['#eee']
+                    }
+                }
+            },
+
+            valueAxis: {
+                axisLine: {
+                    lineStyle: {
+                        color: '#408829'
+                    }
+                },
+                splitArea: {
+                    show: true,
+                    areaStyle: {
+                        color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['#eee']
+                    }
+                }
+            },
+            timeline: {
+                lineStyle: {
+                    color: '#408829'
+                },
+                controlStyle: {
+                    normal: { color: '#408829' },
+                    emphasis: { color: '#408829' }
+                }
+            },
+
+            k: {
+                itemStyle: {
+                    normal: {
+                        color: '#68a54a',
+                        color0: '#a9cba2',
+                        lineStyle: {
+                            width: 1,
+                            color: '#408829',
+                            color0: '#86b379'
+                        }
+                    }
+                }
+            },
+            map: {
+                itemStyle: {
+                    normal: {
+                        areaStyle: {
+                            color: '#ddd'
+                        },
+                        label: {
+                            textStyle: {
+                                color: '#c12e34'
+                            }
+                        }
+                    },
+                    emphasis: {
+                        areaStyle: {
+                            color: '#99d2dd'
+                        },
+                        label: {
+                            textStyle: {
+                                color: '#c12e34'
+                            }
+                        }
+                    }
+                }
+            },
+            force: {
+                itemStyle: {
+                    normal: {
+                        linkStyle: {
+                            strokeColor: '#408829'
+                        }
+                    }
+                }
+            },
+            chord: {
+                padding: 4,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            width: 1,
+                            color: 'rgba(128, 128, 128, 0.5)'
+                        },
+                        chordStyle: {
+                            lineStyle: {
+                                width: 1,
+                                color: 'rgba(128, 128, 128, 0.5)'
+                            }
+                        }
+                    },
+                    emphasis: {
+                        lineStyle: {
+                            width: 1,
+                            color: 'rgba(128, 128, 128, 0.5)'
+                        },
+                        chordStyle: {
+                            lineStyle: {
+                                width: 1,
+                                color: 'rgba(128, 128, 128, 0.5)'
+                            }
+                        }
+                    }
+                }
+            },
+            gauge: {
+                startAngle: 225,
+                endAngle: -45,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: [[0.2, '#86b379'], [0.8, '#68a54a'], [1, '#408829']],
+                        width: 8
+                    }
+                },
+                axisTick: {
+                    splitNumber: 10,
+                    length: 12,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: 'auto'
+                    }
+                },
+                splitLine: {
+                    length: 18,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                pointer: {
+                    length: '90%',
+                    color: 'auto'
+                },
+                title: {
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
+                detail: {
+                    textStyle: {
+                        color: 'auto'
+                    }
+                }
+            },
+            textStyle: {
+                fontFamily: 'Arial, Verdana, sans-serif'
+            }
+        };
+
+        var echartBarLine = echarts.init(document.getElementById('mainb'), theme);
+
+        echartBarLine.setOption({
+            title: {
+                x: 'center',
+                y: 'top',
+                padding: [0, 0, 20, 0],
+                text: 'Project Perfomance :: Revenue vs Input vs Time Spent',
+                textStyle: {
+                    fontSize: 15,
+                    fontWeight: 'normal'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false,
+                        title: "Text View",
+                        lang: [
+                          "Text View",
+                          "Close",
+                          "Refresh",
+                        ],
+                    },
+                    restore: {
+                        show: true,
+                        title: 'Restore'
+                    },
+                    saveAsImage: {
+                        show: true,
+                        title: 'Save'
+                    }
+                }
+            },
+            calculable: true,
+            legend: {
+                data: ['Revenue', 'Cash Input', 'Time Spent'],
+                y: 'bottom'
+            },
+            xAxis: [{
+                type: 'category',
+                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            }],
+            yAxis: [{
+                type: 'value',
+                name: 'Amount',
+                axisLabel: {
+                    formatter: '{value} ml'
+                }
+            }, {
+                type: 'value',
+                name: 'Hours',
+                axisLabel: {
+                    formatter: '{value} °C'
+                }
+            }],
+            series: [{
+                name: 'Revenue',
+                type: 'bar',
+                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+            }, {
+                name: 'Cash Input',
+                type: 'bar',
+                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+            }, {
+                name: 'Time Spent',
+                type: 'line',
+                yAxisIndex: 1,
+                data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+            }]
+        });
+    </script>
+    <!-- /ECharts -->
+    <script>
+        $(document).on('show.bs.modal', '#updateModal', function (event) {
+            var button = $(event.relatedTarget);
+            var action = button.data('action');
+            var taskId = button.data('taskid');
+            var taskTitle = button.data('tasktitle');
+            var taskNumber = button.data('tasknumber');
+            var modal = $(this);
+
+            modal.find(".modal-title").empty();
+            modal.find(".modal-body").empty();
+
+            if (action === "edit") {
+
+                modal.find(".modal-title").text("Edit: " + taskTitle);
+                modal.find(".modal-body")
+                    .load("/PTask/Update/" + taskId + "?taskNumber=" + taskNumber + " form", function () {
+                        validateAjaxForm('#UpdateTaskForm');
+                    });
+
+            } else if (action === "report") {
+
+                modal.find(".modal-title").text("Report time: " + taskTitle);
+                modal.find(".modal-body")
+                    .load("/PTask/Report/" + taskId + "?taskNumber=" + taskNumber + " form", function () {
+
+                        activateKnobs();
+                        validateAjaxForm('#ReportTimeForm')
+
+                        var input = $("input#ProgressPercent");
+                        input.after("<span id='percent-sign'>%</span>");
+
+                        var styles = [];
+
+                        styles["width"] = input.css("width");
+                        styles["height"] = input.css("height");
+                        styles["position"] = input.css("position");
+                        styles["margin-top"] = input.css("margin-top");
+                        styles["margin-left"] = input.css("margin-left");
+                        styles["font-size"] = input.css("font-size");
+                        styles["line-height"] = input.css("line-height");
+                        styles["color"] = input.css("color");
+                        styles["line-height"] = input.css("line-height");                 
+
+                        for (var key in styles) {
+
+                            if (styles.hasOwnProperty(key)) {
+                                $("span#percent-sign").css(key, styles[key]);
+                            }
+                        }                
+
+                    });
+            }            
+        });
+
+        function onEditFormSuccess(data) {
+            $('#updateModal').modal('hide');
+            refreshProgressBars();
+        }
+
+        
+    </script>
+
+}
