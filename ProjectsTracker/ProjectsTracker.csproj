@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -239,6 +241,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ApplicationUserViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -377,6 +384,12 @@
       <Project>{B0E6C418-AABC-4FDE-A468-26AC424CD8AE}</Project>
       <Name>ProjectsTracker.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
