@@ -202,3 +202,8 @@ C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\bin\Microsoft.Owin.S
 C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\obj\Debug\ProjectsTracker.csprojResolveAssemblyReference.cache
 C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\obj\Debug\ProjectsTracker.dll
 C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\obj\Debug\ProjectsTracker.pdb
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\bin\Web.config
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\bin\Web.Debug.config
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\bin\Web.Release.config
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\obj\Debug\ProjectsTracker.Properties.Resources.resources
+C:\Users\Maria\Source\Repos\ProjectsTracker\ProjectsTracker\obj\Debug\ProjectsTracker.csproj.GenerateResource.Cache
