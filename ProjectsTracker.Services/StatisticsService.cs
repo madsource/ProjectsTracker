@@ -135,8 +135,14 @@ namespace ProjectsTracker.Services
         public string GetProjectStatus(Project project)
         {
             double spendBudgetUntilNow = this.GetProjectTotalTimeSpend(project) * PtConstants.RatePerHour;
-            double estimatedProjectHours = (project.ExpectedEndDate.Date - project.CreatedOn.Date).Days * PtConstants.WorkingHoursPerDay;            
-            double estimatedBudgetUntilNow = (((DateTime.Now.Date - project.CreatedOn.Date).Days * PtConstants.WorkingHoursPerDay) / estimatedProjectHours) * (double)project.EstimatedBudget;
+            double estimatedProjectHours = (project.ExpectedEndDate.Date - project.CreatedOn.Date).Days * PtConstants.WorkingHoursPerDay;
+            int daysUntilNow = (DateTime.Now.Date - project.CreatedOn.Date).Days;
+
+            if(daysUntilNow == 0)
+            {
+                daysUntilNow = 1;
+            }
+            double estimatedBudgetUntilNow = ((daysUntilNow * PtConstants.WorkingHoursPerDay) / estimatedProjectHours) * (double)project.EstimatedBudget;
             double budgetUntilNowWithTolerance = estimatedBudgetUntilNow + (estimatedBudgetUntilNow * PtConstants.BudgetToleranceInPercents);
 
             if (spendBudgetUntilNow > budgetUntilNowWithTolerance)
