@@ -259,7 +259,6 @@
   <ItemGroup>
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\theme.css" />
-    <Content Include="Content\green.css" />
     <Content Include="Content\green.png" />
     <Content Include="Content\images\avatars\admin%40projectstracker.bg.png" />
     <Content Include="Content\images\avatars\ivan%40pt.bg.png" />
