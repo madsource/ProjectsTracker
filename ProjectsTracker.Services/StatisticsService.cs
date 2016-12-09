@@ -134,19 +134,16 @@ namespace ProjectsTracker.Services
 
         public string GetProjectStatus(Project project)
         {
-            double actualCost = 0;
+            double spendBudgetUntilNow = this.GetProjectTotalTimeSpend(project) * PtConstants.RatePerHour;
+            double estimatedProjectHours = (project.ExpectedEndDate.Date - project.CreatedOn.Date).Days * PtConstants.WorkingHoursPerDay;            
+            double estimatedBudgetUntilNow = (((DateTime.Now.Date - project.CreatedOn.Date).Days * PtConstants.WorkingHoursPerDay) / estimatedProjectHours) * (double)project.EstimatedBudget;
+            double budgetUntilNowWithTolerance = estimatedBudgetUntilNow + (estimatedBudgetUntilNow * PtConstants.BudgetToleranceInPercents);
 
-            foreach (var task in project.Tasks)
-            {
-                actualCost += ((task.ProgressPercent / 100) * task.EstimatedHours) * PtConstants.RatePerHour;
-            }
-
-            if (actualCost > (double)project.EstimatedBudget + (double)project.EstimatedBudget * PtConstants.BudgetToleranceInPercents)
+            if (spendBudgetUntilNow > budgetUntilNowWithTolerance)
             {
                 return "Red";
             }
-            else if (((double)project.EstimatedBudget + (double)project.EstimatedBudget * PtConstants.BudgetToleranceInPercents) > actualCost
-                && actualCost > (double)project.EstimatedBudget)
+            else if ( budgetUntilNowWithTolerance > spendBudgetUntilNow && spendBudgetUntilNow > estimatedBudgetUntilNow)
             {
                 return "Amber";
             }
